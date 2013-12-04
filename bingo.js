@@ -1,8 +1,8 @@
 var socket = require('socket.io-client'),
     cred = {
-        name : 'Tony Lu',
+        name : 'Tony Tripper',
         email: 'tonysanv@gmail.com',
-        url : ''
+        url : 'https://github.com/tonysan/yahoobingo'
     },
     card,
     client = socket.connect('ws://yahoobingo.herokuapp.com');
@@ -90,11 +90,14 @@ function checkCard(card)
 
 
     // card full of holes
-    if (bingoCount == 12)
+    if (bingoCount > 0)
     {
-        console.log('This card is done, asking for a new card.');
+        client.emit('bingo');
+        console.log('Called bingo!');
+        return 0;
+        //console.log('This card is done, asking for a new card.');
         //socket.disconnect();
-        client = socket.connect('ws://yahoobingo.herokuapp.com');
-        client.emit('register', cred);
+        //client = socket.connect('ws://yahoobingo.herokuapp.com');
+        //client.emit('register', cred);
     }
 }
