@@ -8,3 +8,5 @@ Readme:
 run "node bingo.js"
 
 thanks!
+
+test
